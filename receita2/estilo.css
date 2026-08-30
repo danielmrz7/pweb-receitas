@@ -1,7 +1,52 @@
-p.verso{
-    color: blue
+p.verso {
+   color: blue;
 }
 
-p.mote{
-    color: red
+p.mote {
+   color: red;
+}
+
+a.link-poeta {
+   text-decoration: none;
+   color: darkgreen;
+   font-weight: bold;
+}
+
+a.link-poeta:hover {
+   color: limegreen;
+   text-decoration: underline;
+}
+
+a.link-poeta:visited {
+   color: purple;
+}
+
+img.avatar {
+   border-radius: 50%;
+   width: 100px;
+   height: 100px;
+   object-fit: cover;
+}
+
+div.poeta img {
+   border-radius: 50%;
+   width: 100px;
+   height: 100px;
+   object-fit: cover;
+}
+
+th {
+   background-color: #333333;
+   color: white;
+   padding: 10px;
+}
+
+td {
+   padding: 10px;
+   border: 1px solid #ccc;
+}
+
+table {
+   border-collapse: collapse;
+   margin-top: 20px;
 }
