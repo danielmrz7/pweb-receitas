@@ -1,85 +1,103 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        VASCO TA EM 19 NA TABELA MDS
-    </head>
-    <style>
-        table{
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-        td, th{
-            border: 1px solid #add;
-            padding: 8px;
-        }
-        tr:nth-child(even){background-color:#0a0303;}
-        
-        th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #010403;
-            color:white;
-        }
-    </style>
-<body>
+   <head>
+      <title>Minha Página de Trovas e Bebidas</title>
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+         }
+         
+         .tabelas-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+         }
 
-    <h1>Uma trova...</h1>
-        <img src="https://akamai.sscdn.co/uploadfile/letras/playlists/3/a/b/9/3ab92363f7974d679f4194de9f389b5b.jpg" width="200"/>
-        <p>
-         Eu só preciso de hoje <br/>      
-         Pra viver e ser feliz <br/>
-         O passado já me foge <br/>
-         E o futuro nada diz! <br/>
+         table {
+            border-collapse: collapse;
+            width: 250px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+         }
+
+         th, td {
+            border: 1px solid #cccccc;
+            padding: 10px;
+            text-align: left;
+         }
+
+         th {
+            background-color: #f2f2f2;
+         }
+
+      </style>
+   </head>
+   <body>
+      <img src="https://akamai.sscdn.co/uploadfile/letras/playlists/3/a/b/9/3ab92363f7974d679f4194de9f389b5b.jpg" width="200"/>
+      
+      <h1>Uma trova...</h1>
+      <p>
+         Eu só preciso de hoje<br/>      
+         Pra viver e ser feliz<br/>
+         O passado já me foge<br/>
+         E o futuro nada diz!<br/>
       </p>
       <br/>
       <p>
-      Autor: Francisco Borges
-        </p>
-    <table>
-        <tr>
-            <td>
-                <table border="1">
-                    <caption>TABELA DE BEBIDAS</caption>
-                        <thead>
-                            <tr>
-                                <th>Bebida</th>
-                                <th>Preço</th>
-                                <th>Fabricação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>Cerveja</th>
-                                <td> 5,00R$ </td>
-                                <td>17/05/2005</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </td>
-                    
-            <td>
-                 <table border="1">
-                    <caption>TABELA DE BEBIDAS</caption>
-                        <thead>
-                            <tr>
-                                <th>Bebida</th>
-                                <th>Preço</th>
-                                <th>Fabricação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>Cerveja</th>
-                                <td> 5,00R$ </td>
-                                <td>17/05/2005</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </td>
-            <p><a href="https://ge.globo.com/getv/">GE GLOBO</a>
-            </p>
-   </body>
+         Autor: Francisco Borges
+      </p>
+      
+      <hr/>
+
+      <h2>Cardápio</h2>
+      
+      <!-- Container para colocar tabelas lado a lado -->
+      <div class="tabelas-container">
+         
+         <!-- Exercício 2: Tabela de Bebidas 1 -->
+         <table>
+            <tr>
+               <th>Bebidas sem Álcool</th>
+               <th>Preço</th>
+            </tr>
+            <tr>
+               <td>Suco de Laranja</td>
+               <td>R$ 7,00</td>
+            </tr>
+            <tr>
+               <td>Refrigerante</td>
+               <td>R$ 5,00</td>
+            </tr>
+         </table>
+
+         <!-- Tabela 2 para compor o lado a lado -->
+         <table>
+            <tr>
+               <th>Bebidas com Álcool</th>
+               <th>Preço</th>
+            </tr>
+            <tr>
+               <td>Cerveja</td>
+               <td>R$ 9,00</td>
+            </tr>
+            <tr>
+               <td>Caipirinha</td>
+               <td>R$ 15,00</td>
+            </tr>
+         </table>
+      </div>
+
+      <br/><br/>
+      
+      <h2>Links Úteis</h2>
+      <p>
+         Aprenda mais sobre HTML no 
+         <a href="https://www.brejas.com.br/links.shtml" target="_blank">Mais Sites sobre o mundo da cervejs</a>.
+      </p>
+      <p>
+         Comprar Cervejas
+        <a href="https://www.lojacerveja.com.br/" target="_blank">Comprar Cervejas</a>.
+      </p>
+
+   </body>     
 </html>
