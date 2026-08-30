@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>   
+   <head>
+      <meta charset="UTF-8">
+      <title>Receita 4 - Arrays e Funções de Alta Ordem</title>
+      
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+         }
+
+         .cerveja-div {
+            background-color: #f4f4f4;
+            padding: 12px;
+            margin: 5px 0;
+            border-left: 5px solid #ff9900;
+            font-weight: bold;
+            width: 200px;
+         }
+
+         table {
+            border-collapse: collapse;
+            width: 300px;
+            margin-top: 15px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+         }
+         
+         th {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: left;
+         }
+         
+         td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+         }
+
+         .controles {
+            margin-bottom: 20px;
+         }
+         button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+         }
+         button:hover {
+            background-color: #0055aa;
+         }
+      </style>
+   </head>
+   
+   <body>
+      <div class="controles">
+         <button id="botaoCarregar">Carregar Cervejas</button>
+         <button id="botaoOrdenar">Ordenar Cervejas</button>
+         <button id="botaoEmbaralhar">Embaralhar Cervejas</button>
+      </div>            
+      
+      <div id="meu amor"></div>
+   </body>   
+   
+   <script>
+      let cervejas = ["Skol", "Brahma", "Itaipava", "Heineken", "Antártica", "Skol Beats"];
+      
+      function transformar(item){
+       
+         return `<tr><td>${item}</td></tr>`;
+      }
+      
+      function carregarDiv(){
+         let div = document.getElementById("meu amor");
+         
+         let cervejasHtml = cervejas.map(transformar); 
+         
+         div.innerHTML = `
+            <table>
+               <tr><th>Cervejas Disponíveis</th></tr>
+               ${cervejasHtml.join("\n")}
+            </table>
+         `;
+      }
+
+      function ordenar(){
+         cervejas.sort();
+         carregarDiv(); 
+      }
+
+      function embaralhar(){
+         cervejas.sort(() => Math.random() - 0.5);
+         carregarDiv();
+      }
+
+            let botao = document.getElementById("botaoCarregar");
+      botao.addEventListener("click", carregarDiv);
+      let btnOrdenar = document.getElementById("botaoOrdenar");
+      btnOrdenar.addEventListener("click", ordenar);
+      let btnEmbaralhar = document.getElementById("botaoEmbaralhar");
+      btnEmbaralhar.addEventListener("click", embaralhar);
+   </script>
+</html>
