@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">   
+   <head>
+      <meta charset="UTF-8">
+      <title>Exercício - Promises, Then e Catch</title>
+      <style>
+         body { font-family: Arial, sans-serif; padding: 20px; }
+         table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+         th { background-color: #333; color: white; padding: 10px; text-align: left; }
+         td { border: 1px solid #ccc; padding: 10px; }
+         button { padding: 10px 20px; cursor: pointer; background-color: #27ae60; color: white; border: none; font-weight: bold; }
+         .erro { color: red; font-weight: bold; margin-top: 15px; }
+      </style>
+   </head>
+
+   <body>
+      <button id="botaoCarregar">Carregar Dados (via Promise/Then)</button>
+      <div id="resultadoDiv"></div>            
+      
+      <script type="module">
+         import { criarTabelaGenerica } from './tabela.js';
+
+         // Função SEM o async, usando apenas Promises
+         const carregarDadosAPI = () => {
+            const div = document.getElementById("resultadoDiv");
+            div.innerHTML = "<p>Fazendo requisição... aguardando Promessa.</p>";
+
+            // O fetch retorna a primeira Promise
+            fetch("https://jsonplaceholder.typicode.com/users")
+               .then(res => {
+                  if (!res.ok) throw new Error("Erro de rede");
+                  return res.json(); // Retorna uma nova Promise com a conversão
+               })
+               .then(json => {
+                  // Quando a conversão JSON é resolvida, montamos a tabela
+                  let cabecalhos = ["Nome", "E-mail", "Telefone", "Website"];
+                  let propriedades = ["name", "email", "phone", "website"];
+
+                  criarTabelaGenerica(json, "resultadoDiv", cabecalhos, propriedades);
+               })
+               .catch(err => {
+                  // O catch captura qualquer exceção gerada pelas promessas anteriores
+                  div.innerHTML = `<div class="erro">Fudeu... Algo deu errado: ${err.message}</div>`;
+               });
+         }
+
+         let botao = document.getElementById("botaoCarregar");
+         botao.addEventListener("click", carregarDadosAPI);                 
+      </script>
+   </body>   
+</html>

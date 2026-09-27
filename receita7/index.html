@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">   
+   <head>
+      <meta charset="UTF-8">
+      <title>Receita JSON5 - Fetch e Tabelas Genéricas</title>
+      <style>
+         body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+
+         button {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+         }
+         
+         button:hover {
+            background-color: #0056b3;
+         }
+
+         table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 900px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+         }
+         
+         th {
+            background-color: #343a40;
+            color: white;
+            padding: 12px;
+            text-align: left;
+         }
+         
+         td {
+            padding: 12px;
+            border: 1px solid #dee2e6;
+         }
+         
+         tr:nth-child(even) { background-color: #f8f9fa; }
+
+         .erro {
+            color: #dc3545;
+            font-weight: bold;
+            padding: 15px;
+         }
+      </style>
+   </head>
+
+   <body>
+      <button id="botaoCarregar">Carregar Usuários da API</button>
+      <div id="resultadoDiv"></div>            
+      
+      <script type="module">
+         import { criarTabelaGenerica } from './tabela.js';
+
+         const carregarDadosAPI = async () => {
+            const div = document.getElementById("resultadoDiv");
+            div.innerHTML = "<p>Buscando dados na internet...</p>";
+
+            try {
+               // Substituição da API random-data-api (fora do ar) pela jsonplaceholder
+               let res = await fetch("https://jsonplaceholder.typicode.com/users");
+               
+               if (!res.ok) throw new Error("Erro ao acessar a API");
+
+               let dados = await res.json(); 
+
+               // Definição das novas propriedades e cabeçalhos a serem exibidos
+               let cabecalhos = ["Nome", "E-mail", "Telefone", "Website"];
+               let propriedades = ["name", "email", "phone", "website"];
+
+               criarTabelaGenerica(dados, "resultadoDiv", cabecalhos, propriedades);
+
+            } catch (err) {
+               div.innerHTML = `<div class="erro">Falha na requisição: ${err.message}</div>`;
+            }
+         }
+
+         let botao = document.getElementById("botaoCarregar");
+         botao.addEventListener("click", carregarDadosAPI);                 
+      </script>
+   </body>   
+</html> 
